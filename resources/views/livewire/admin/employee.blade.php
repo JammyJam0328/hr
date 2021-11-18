@@ -632,7 +632,10 @@
                                         @endif
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 uppercase">
-                                        {{ $employee->designation->position->name }}
+                                        @if ($employee->designation)
+                                            {{ $employee->designation->position->name }}
+
+                                        @endif
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium ">
                                         <div class="flex  space-x-2 justify-end items-center">

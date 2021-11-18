@@ -21,7 +21,7 @@ class AccountSeeder extends Seeder
             'password' => bcrypt('admin123'),
         ]);
 
-        User::create([
+        $hr = User::create([
             'role'=>'employee',
             'name' => 'Human Resource',
             'email' => 'hr@gmail.com',
@@ -29,6 +29,16 @@ class AccountSeeder extends Seeder
             'is_hr'=>true,
         ]);
 
+        $employee = $hr->employee()->create([
+            'firstname'=>'Human Resource',
+            'middlename'=>'Human Resource',
+            'lastname'=>'Human Resource',
+            'address'=>'Address 101',
+            'contact_number'=>'09123456789',
+            'department_id'=>1,
+        ]);
+        
+        
         User::create([
             'role'=>'employee',
             'name' => 'Richard Do',

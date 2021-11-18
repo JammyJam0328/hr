@@ -172,8 +172,8 @@ class Employee extends Component
         $this->edit_contact=$employee->contact_number;
         $this->edit_department_id=$employee->department_id;
         $this->edit_approver_id=$employee->approver_id;
-        $this->edit_position=$employee->designation->position_id;
-        $this->edit_position_department=$employee->designation->department_id;
+        $this->edit_position=$employee->designation ? $employee->designation->position_id : '';
+        $this->edit_position_department=$employee->designation ? $employee->designation->department_id : '';
     }
 
     public function update()
@@ -191,6 +191,7 @@ class Employee extends Component
         ]);
 
         $employee = EmployeeModel::where('id',$this->employee)->first();
+
         $employee->update([
             'firstname'=>$this->edit_firstname,
             'middlename'=>$this->edit_middlename,
@@ -203,10 +204,19 @@ class Employee extends Component
 
         $designation = Designation::where('employee_id',$this->employee)->first();
 
-        $designation->update([
+       if ($designation) {
+           $designation->update([
             'position_id'=>$this->edit_position,
             'department_id'=>$this->edit_position_department,
-        ]);
+           ]);
+           # code...
+       }else{
+              Designation::create([
+                'employee_id'=>$this->employee,
+                'position_id'=>$this->edit_position,
+                'department_id'=>$this->edit_position_department,
+              ]);
+       }
 
         $this->edit_firstname='';
         $this->edit_middlename='';
