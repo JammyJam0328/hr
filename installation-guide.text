@@ -1,0 +1,10 @@
+1. copy this folder to the htdocs folder
+2. make database in phpmyadmin called 'las_db'
+3. cd to this folder
+// run the following command in terminal
+4.  'php artisan migrate'
+5.  'php artisan db:seed'
+6.  'npm run watch'
+7. 'php artisan serve'
+
+goto http://localhost:8000/
