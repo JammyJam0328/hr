@@ -39,10 +39,12 @@
                                 <a href="{{ route('employee.home') }}"
                                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
 
-                                @if (auth()->user()->employee->designation->position->name == 'Head')
-                                    <a href="{{ route('employee.leave-application') }}"
-                                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Leave
-                                        Applications</a>
+                                @if (auth()->user()->employee->designation)
+                                    @if (auth()->user()->employee->designation->position->name == 'Head')
+                                        <a href="{{ route('employee.leave-application') }}"
+                                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Leave
+                                            Applications</a>
+                                    @endif
                                 @endif
 
                                 @if (auth()->user()->is_hr)
