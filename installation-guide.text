@@ -6,5 +6,8 @@
 5.  'php artisan db:seed'
 6.  'npm run watch'
 7. 'php artisan serve'
+8. 'php artisan storage:link'
+// if demands laravel key then run
+9. 'php artisan key:generate'
 
 goto http://localhost:8000/
